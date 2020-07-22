@@ -45,3 +45,32 @@
 
 #print('apple pineapple'.rfind('pl'))
 
+#print('I am %s' % 'james')
+#name = 'maria'
+#print('I am %s.' % name)
+#print('%.2f' % 2.3)
+
+#print('%10s' % 'python')
+
+#print('%10.2f' % 2.3)
+#print('%10.2f' % 2000.3)
+#print('%-10.2f' % 2.3)
+
+#print('Hello, {0} {2} {1}'.format('Python', 'Script', 3.6))
+
+#print('Hello, {language} {version}'.format(language='Python', version=3.6))
+
+#language = 'Python'
+#version = 3.6
+#print(f'Hello, {language} {version}')
+
+#print('{0:>10}'.format('Python'))
+
+#print('{0:03d}'.format(35))
+#print('%08.2f' % 3.6)
+#print('{0:08.2f}'.format(150.37))
+#print('{0:x>10}'.format(15))
+
+print(format(148749345,','))
+
+print('%20s' % format(454222344, ','))
