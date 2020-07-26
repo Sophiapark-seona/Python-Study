@@ -71,6 +71,12 @@
 #print('{0:08.2f}'.format(150.37))
 #print('{0:x>10}'.format(15))
 
-print(format(148749345,','))
+#print(format(148749345,','))
 
-print('%20s' % format(454222344, ','))
+#print('%20s' % format(454222344, ','))
+
+path = 'C:\\Users\\dojang\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe'
+
+x = path.split('\\')
+filename = x[-1]
+print(filename)
