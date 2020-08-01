@@ -1,0 +1,920 @@
+Can you see this?
+Yes <3
+Good :D
+Ready?<3
+Yes!
+Ok! So, today we'll talk about classes and object oriented programming
+They are fundamental topics, and you'll have to deal with it a lot on frontend too
+But we don't need python to learn them, so we don't need code today!
+Got it :)<3
+Cute <3
+Ok, let's start to explain what an object is in programming, and why it exists!
+
+What is oop (object oriented programming)
+So, the programs you saw so far, both in C and python, are linear blocks of code
+The program starts in one point and all the code is executed in order until the end.
+Right?
+Right!
+Good! That method of programming is good, but often it's not the best thing to 
+represent correctly how things should work, especially when we have to use data from a db
+I'll make some examples to make you understand easily.
+Do you remember structs in C?
+Yes !
+Good! <3 
+As you remember, sometimes we want to use a variable that contain more values, not
+only one.
+For example, let's say that we want to make your app.
+The user maybe will put a link inside the app, and then a picture to rememeber how it looks
+and then a name and maybe the price too.
+Makes sense?
+Yes!
+Now, we could have many variables (link,img,name,price).
+But it becomes annoying when you need to have a list of these things.
+Imagine needing to take all the things that the user put inside the app to save them somewhere.
+you would need a list of links, a list of img, a list of names and a list of prices.
+Right?
+Right!
+Please stop me if there is something that it's not clear <3 
+Ok, don't worry <3
+I always worry about you <3
+Anyway! :P
+Now we have a list of all the articles that our user want to buy.
+But the user wants to see them ordered by price, because he wants to buy the cheapest.
+We can order the list of prices, but if we do that we lose the related index of the other
+variables, right?
+For example:
+we have 3 items:
+names [a,b,c]
+img [img1,img2,img3]
+links [link1,link2,link3]
+prices [10,20,8]
+
+The user want to sort the articles by price.
+Before sorting, we know that in all the arrays, 
+the index 0 is the first article, 
+the index 1 is the second article,
+the index 2 is the third article
+All clear until here?
+Yes I am !
+Good <3
+Now we sort the prices
+prices [8,10,20]  <----- sorted
+But now, the prices[0] is not the same article as the names[0]!! Right?
+Right! It's wrong, right?
+Yep, very very wrong!
+So we would need to sort all the arrays based on the sorting of the prices array.
+But that's very complicated to do, and also take a long time to write and to execute
+The code it's not performat.
+So, they invented structs
+
+struct1 {
+    name = a,
+    img = img1
+    links = link1,
+    price = 10
+}
+
+This way, if we have an array of structs, we can order it without losing the values
+of that item.
+Clear?
+So clear <3
+You're so smart <3
+1 sec, sorry
+Don't worry :D
+I'm back <3 cats making noises hahaha
+Hahahaha so Cute
+Ok, back to our topic <3
+
+Now we have our struct that represent the article our user put inside the app.
+Do you remember how to access a value inside a struct?
+Hmm I don't remember well!
+No problem, I made you do that the other day with the regular.match! <3
+You use this notation ---> struct.name / struct.img / struct.link / struct.price
+Easy, right?
+Yes!
+Ok, perfect!
+Now we have our structs, and programming became easier!
+But we are still missing something!
+What happens if I want to apply a discount to the articles sometimes?
+I have to do struct.price = struct.price - 10 (for example)
+Makes sense?
+Yes, it's when the item is on discount suddenly?
+Yes, that's a good example!
+So, if we need to do that many times in our code, it would make sense to have a function
+for that, right?
+Right!
+so we need a function like this:
+function discount(struct s)
+{
+    s.price = s.price -10
+}
+Right?
+The one inside () is one of structs?
+it's the one we pass to the function.
+like when we did the sum function, it was like
+def sum(int a, int b)
+So 's' is a name of a struct?
+Yes, it's the name we use inside the function, like a and b
+Got it :D
+So smart <3
+
+So, now we have our function, but...
+Ah, wait! I forgot the function name hahahaha
+Oh! hahaha it's ok teacher <3
+Best student ever <3
+So, now we have our function, but what happens if we have different things in our
+code that need a discount?
+For example, let's say that our app has a premium offer, where the user pays a 
+subsciption to have more features.
+Maybe we could have a subsciption struct like this:
+
+struct subsciption {
+    user: user1
+    price: 20
+}
+
+Makes sense?
+Right!
+Ok, but now we want to make a discount on our app price.
+So we need another "discount" function like this:
+
+function discount(struct s)
+{
+    s.price = s.price - 20
+}
+
+Right?
+The subscription is concerning with the price of products?
+No! let me change one thing to make it more clear
+
+Article:
+struct article {
+    name = a,
+    img = img1
+    links = link1,
+    articlePrice = 10
+}
+
+Subscription:
+struct subsciption {
+    user: user1
+    subscriptionPrice: 20
+}
+
+So, our first "discount" function is:
+function discount(struct s)
+{
+    s.articlePrice = s.articlePrice - 20
+}
+
+and the second is:
+function discount(struct s)
+{
+    s.subscriptionPrice = s.subscriptionPrice - 20
+}
+
+Is it more clear now?
+Yes, thank you <3<3
+You're the best <3<3
+
+So, now we have 2 different discount functions.
+We can call them with different names, but that can become difficult to read in the code, after a while.
+It would be better if we could do something like this:
+
+struct article {
+    name = a,
+    img = img1
+    link = link1,
+    articlePrice = 10
+
+
+    function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+and then call article.discount() to automatically reduce the price on the article.
+much easier, right?
+Right!
+This is what a class is! A struct that has functions inside!
+You are way better than the teacher of the site hahaha <3
+Because I have personal benefits with my student <3<3
+So, now, let's write the article class with the right name haha
+
+class article {
+    name = a,
+    img = img1
+    link = link1,
+    articlePrice = 10
+
+
+    function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+Easy enough hahaha
+It's the way of C right?
+C doesn't have classes, that's why they created C++!
+Oh I see!
+C++ is the oop version of C, and it was created just to be able to use these kind of things
+Wow! I didn't know that hahaha
+Hahahah this is also a programming history class hahahaha
+
+Now, our article class is ready, but like that it's not very useful.
+As you can see, the values of its properties (name, img, link and articlePrice) are fixed. Right?
+Right!
+So we need a way to be able to create many different articles, not just one!Right?
+Right :D
+So they created the idea of "instance".
+An instance is similar to game maps or servers.
+When I started playing the game, I had to be in the same server as you, right?
+Right!
+Because all servers are the same, they have the same things inside. For example a list of users.
+But at the same time, the values inside are completely different.
+Every server has a different value inside its list of users, right?
+Right!
+So, if the server was a class like this:
+
+class Server {
+    string name
+    string[] userList
+}
+
+We will have many servers, like "server1", "server2" etc.
+And then we would do things like
+
+server1.name = "Name1"
+server2.name = "Name2"
+
+etc etc etc
+
+Clear?
+The class server contains all of them? server1,2,...
+No, the class Server is the definition of how a server is done.
+Then each server variable (server1, server2 etc) will contain different values.
+Like when you make a string variable.
+the string "class" define that a string contains the text.
+then you make a new one like this
+string a = "hello"
+string b = "hi"
+
+They are both (a and b) of type string, but they are different variables.
+Same things happens with our servers.
+server1 and server2 are both servers, but they are different variables
+In case of string we use like this "string a" but how come we connect server1 with the class?
+Such a smart question <3<3<3<3
+It's actually very similar!
+You don't know, but "string" is a class too!
+
+we just do 
+Server server1
+Just the same way!
+Yes! <3
+But we have a special word to add to this too!
+When you just need to declare it, you can just write "server server1"
+But when you need to give it a value, how can you do? 
+The server class has 2 values, name and userList!
+In theory, we can do like this:
+
+server server1
+server1.name = "name1"
+server1.userList = ["user1", "user2"]
+
+Makes sense?
+Yes!
+
+The first line, if left like this, is a little bit confusing.
+So they created something to make it more clear. As when you are speaking, we want to say "create a new server!"
+So they user the "new" keyword! hahaha
+It's used like this:
+
+server server1 = new server()
+
+It's very logical, right?
+Understood!
+So good <3
+The complete code would be 
+
+server server1 = new server()
+server1.name = "name1"
+server1.userList = ["user1", "user2"]
+
+Now, after the "new server()", server1 is a variable of type server.
+This is programming is called "instance" of the server type (or server class)
+And the class is also called "object", because it represent an object.
+In this case it's a server, but before it was an article, for example.
+
+This is why this kind of programming is called object oriented. Because it's a programming style that uses objects (classes).
+Ok so far?
+Yes, it sounds very very important!
+It is <3
+
+So, this is the very basics of classes.
+But we need to introduce some special things that you can do with classes.
+When this kind of programming was created, they decided that classes should always have some abilities to be acceptable as such.
+The first thing we'll introduce is the concept of public and private.
+
+Let's start with our articles. We'll make an article class now!
+
+class Article {
+    string name
+    byte[] img
+    string link
+    float articlePrice
+
+    function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+Is everything clear in the class?
+Yes!
+Good <3
+
+Now, as we said before, we want to be able to use the discount function everywhere in our code, right?
+right!
+Also, we want to be able to see the name, the image and everything else, right?
+Right!
+Good!
+But let's try to think of something that we don't want to be usable from outside the article class.
+For example, we want to save the original price, before the discount.
+We don't want that the original price is modified by no one else, right? because it's the original and it has to be the same always
+Makes sense?
+Understood!
+So, let's add it!
+
+class Article {
+    string name
+    byte[] img
+    string link
+    float articlePrice
+    float originalPrice
+
+    function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+Ok, now we need a way to say:
+ok, everyone can use and change everything of the article, except for the original price
+To do that, they created the public and private keywords!
+As you can easily imagine, they are used like this:
+
+class Article {
+    public string name
+    public byte[] img
+    public string link
+    public float articlePrice
+    private float originalPrice
+
+    public function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+Easy, right?
+Yes<3
+So cute <3
+Just to be exact, "private" means that that value is only usable inside the class.
+So, for example, the "discount" function could use and chage the value of the original price.
+But if you do something like this
+
+Article article1 = new Article()
+
+You can't do
+
+article1.originalPrice = 10
+
+This is not permitted, because originalPrice is private!
+Everything clear until here?
+Clear!
+<3<3<3
+
+But we need to be able to say what the original price was, somehow, right?
+Right!
+
+To do this, they created 3 special type of functions that you can use inside a class:
+1- Constructor
+2- Getter
+3- Setter
+
+Constructor:
+Let's start with this one!
+A constructor is the function that is called when a new object is created!
+You don't know, but we already used it! hahaha
+can you guess when? It's very hard to guess hahaha
+Let me know hahahaha
+<3<3<3
+This one!
+
+Article article1 = new Article()
+
+new Article() <---- this is actually the way to call the constructor function of the Article class!
+
+Remember, the constructor is the function that is called when you create a new variable (instance) of that class.
+
+If you do like we did, so you don't define a contructor at all, then it's like your constructor is an empty function that does nothing.
+But you also have the chance to write that function yourself to make it do something!
+Confusing?hahaha
+Yes hahahaha
+
+It will be much more clear after we write our contructor hahaha
+
+So, every language has a different syntax for it, so in this example we will just write it as "constructor"!
+We have our article class
+
+class Article {
+    public string name
+    public byte[] img
+    public string link
+    public float articlePrice
+    private float originalPrice
+
+    public function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+Now we add a constructor!
+
+class Article {
+    public string name
+    public byte[] img
+    public string link
+    public float articlePrice
+    private float originalPrice
+
+    constructor()
+    {
+        originalPrice = 10
+    }
+
+    public function discount()
+    {
+        articlePrice = articlePrice - 20
+    }
+}
+
+it's just like a function, nothing weird,right?
+Right!
+The special thing it has is that it can never be called on the outside.
+The only time when it's called is when you do new Article().
+new Article() <---- creates a new variable of type Article and execute the constructor function.
+
+Now that we have our class like this, when we do
+
+Article article1 = new Article()
+
+our article1 variable will have the original price set to 10!
+
+Please stop me if it's still confusing!
+Now it's more clear :D
+Are you sure? 100% clear?
+Maybe 90%? hahaha
+Do you have something in particular that is confusing you?
+I think it's just that I'm not used to it!
+Hmm, makes sense! You still have all of this, so maybe you can re read it in the next days more slowly.
+And ask me questions, of course <3
+Oky, Thank you <3 And I want to ask, if I can change some colors of the texts here hahahaha
+This is just a text file, so maybe not, unless you put it inside a program like word
+Then I can do that later, to make them readable :D
+Yes please, do it <3
+
+Now, let's pass to the other functions!
+
+Getter:
+As the name says, a getter is a function that gives you the value of a class property.
+For example, let's say that we have a "person" class
+
+class Person {
+    string name
+    int age
+}
+
+Easy class, right?
+Yes <3
+<3<3<3<3
+
+Let's say that since we work together on it, our app has both italian and korean users!
+As we know, italian and korean age is different! hahaha
+Yes!
+
+So let's add the nationality to our class
+
+class Person {
+    string name
+    int age
+    string nation
+}
+
+then we create 2 people!
+Person Paolo = new Person()
+Person Seona = new Person()
+
+ok? ok!
+Then we do
+Paolo.nation = "Italy"
+Seona.nation = "Korea"
+
+Then, since it makes sense to use the international age more often, let's start using that for now
+
+Paolo.age = 30
+Seona.age = 30
+
+Right?
+Right!
+
+Now, since korean users are used to read they own age in a different way, we want to have a way to check if the user is korean
+To make it simple, if the user is korean we add 1 to the age. (I know it doesn't work exactly like this, but it's to make it simple)
+Something like this
+
+if(nation == "Korea"){
+    return age + 1
+} else {
+    return age
+}
+
+Makes sense?
+Yes!
+
+Using a "getter" we can make that happen automatically every time you do .age on a Person variable!
+Useful right?
+Yes so useful!
+
+Here too, every language does it in a different way. So I'll write in in pseudo code as the constructor
+
+
+class Person {
+    string name
+    int age
+    string nation
+
+    public getAge(){
+        if(nation == "Korea"){
+            return age + 1
+        } else {
+            return age
+        }
+    }
+}
+
+now, if we do Paolo.age it will return 30, but if we do Seona.age it will return 31!
+Not hard at all, right?
+Right!
+
+Setter:
+As you can imagine by the name, the setter is a very similar thing hahaha
+Since we have korean user, let's say that when they input their age, they input 1 year more (as earlier, it's just to make this simple hahaha)
+So this time we need a way to do -1 on the age if the user is korean, right?
+Right!
+Something like:
+
+        if(nation == "Korea"){
+           age = input - 1
+        } else {
+            age = input
+        }
+
+Clear?
+Clear!
+To write it, it's just as easy as the getter!
+
+class Person {
+    string name
+    int age
+    string nation
+
+    public getAge(){
+        if(nation == "Korea"){
+            return age + 1
+        } else {
+            return age
+        }
+    }
+
+    public setAge(input){
+        if(nation == "Korea"){
+           age = input - 1
+        } else {
+            age = input
+        }        
+    }
+}
+
+Is it clear or confusing?
+It's clear <3
+So smart <3
+
+Ok, we finished with the special functions of the classes!
+There is only 1 more concept that I want to tell you and then we are done!
+Wow!! keep going <3
+
+Ok, so, oop has 4 main concept that you will find everywhere if you search for an explanation about oop:
+- Encapsulation
+- Abstraction
+- Inheritance
+- Polymorphism
+
+The first 2, for now we'll skip them.
+You only need it on a more advanced level.
+The last 2 are needed! understanding the last means that you understand the 3rd too, so let's explain the last <3
+
+Okay <3
+
+
+Polymorphism:
+Ok, so!
+Classes are basically a way to describe a real object, right?
+Right!
+
+Let's say that we want to make a little game!
+Our game is a dumb game.
+It has some animals, and you can tell them to pee hahahaha
+Hahahaha yes!
+
+So, we start by making a Animal class!
+
+class Animal {
+    string name
+    string type 
+
+    function Pee() {
+        .....
+    }
+}
+
+Ok?
+OK!
+Type of course is the type of animal (dog, cat, bird, fish etc)
+
+Now, as we now, dogs cats and birds they go to the bathroom in a different way hahaha
+Yes, hahaha
+
+So, if it's a dog we want him to go outside
+if it's a cat to use the litter
+and if it's a bird to do in in a particular point of the house
+
+to do this, we need to make a lot of "if" inside the Pee function
+
+function Pee(){
+    if(type == "dog") {
+        goOutside();
+    }
+    if(type == "cat") {
+        useLitter();
+    }
+    if(type == "bird") {
+        goToBathroom();
+    }
+}
+
+ok?
+ok!
+But now we want to make the male cats user litter1, and the female cats user litter2
+And we want the male dogs going to the front yard, and the female dogs go to the back yard.
+So we need to add the sex of the animal, right?
+right!
+
+class Animal {
+    string name
+    string type 
+    string sex
+
+    function Pee() {
+            if(type == "dog") {
+                if(sex == "male") {
+                    goFront();
+                } else {
+                    goBack();
+                }
+            }
+            if(type == "cat") {
+                if(sex == "male") {
+                    userLitter1();
+                } else {
+                    userLitter2();
+                }
+            }
+            if(type == "bird") {
+                goToBathroom();
+            }
+    }
+}
+
+It's getting complicated, right?
+Right hahaha
+
+Wouldn't it be useful if we had "Dog" and "Cat" and "Bird" classes separately?
+Yes maybe!
+That way we can do 
+
+class Dog {
+    string name
+    string type 
+    string sex
+
+    function Pee() {
+        if(sex == "male") {
+            goFront();
+        } else {
+            goBack();
+        }   
+    }
+}
+
+Isn't this more easy to read?
+Yes and easy to control?
+Yep!
+Especially when you need to change something, but only for dogs and not cats, for example!
+Yes, understood!
+
+But now, let's say that we need to call the Pee function somewhere in our code.
+For example, we have a list of animals like this [dog1, cat1, dog2]
+Hmmm.... How can we make that list?
+We can't do 
+
+dog[] list = [dog1, cat1, dog2]
+
+Because cat1 is a cat!!
+hahahaha yes!
+
+so what we want to do is
+
+animal[] list = [dog1, cat1, dog2]
+
+But that way we need to make the animal class, and not the dog class!
+haaaaaaaaa so complicated!
+Yes hahaha
+
+Luckily, there is a way that we can do both things! <3
+They are called:
+- Inheritance
+- Polymorphism
+
+Inheritance:
+Inheritance is a way to say that all dogs are animals!
+So we can make a dog class, but we can tell the program that the dog is an animal!
+
+We do it like this:
+
+class Animal {
+    string name
+    string type 
+    string sex
+
+    function Pee() {
+    }
+}
+
+class Dog inherit from Animal{
+
+    function Pee() {
+        if(sex == "male") {
+            goFront();
+        } else {
+            goBack();
+        }   
+    }
+}
+
+usually, that "inherit from" is written like this ----> : 
+So,
+
+class Dog : Animal{
+
+    function Pee() {
+        if(sex == "male") {
+            goFront();
+        } else {
+            goBack();
+        }   
+    }
+}
+
+This is a way to say:
+this is the dog class. The dog is an animal, so it has all the things that the animals have.
+But it also has some special things different from other animals!
+
+Confusing?
+I think it would be clear if I read them again later :D
+Yeah, it definitely needs more readings! <3
+
+Anyway, the concept is that you can write
+
+class Dog : Animal{
+}
+
+And automatically, the Dog class will "inherit" (will get from animal) the properties name, type and sex.
+And also the Pee function!
+Because the animal class was like this:
+
+class Animal {
+    string name
+    string type 
+    string sex
+
+    function Pee() {
+    }
+}
+
+So, everything an Animal has, a Dog will have it too!
+Logically it makes sense, right?
+Right!
+
+This is Inheritance!
+now, the other one!
+
+Polymophism:
+This is just a very fancy way to say that the "Dog" class can Pee in a different way than other animals! hahahaha
+For example, let's make cats and dogs!
+
+class Dog : Animal{
+
+    function Pee() {
+        goOutside();
+    }
+}
+
+
+class Cat : Animal{
+
+    function Pee() {
+        useLitter();
+    }
+}
+
+Makes sense, right? The dogs go outside, and the cats use the litter.
+Yes right!
+
+So now we can do
+
+Animal[] a = [dog1, cat1, dog2]
+
+Ok until here?
+what is 'a'? it's the name we give to the list variable!
+Ah understood!
+Now, we want to send them all to Pee hahahaha
+
+for(i = 0; i < 3; i++) {
+    a[i].Pee();
+}
+
+Ok?
+ok!
+
+So, when i = 0, a[i] is dog1, right? right!
+Since a is an array of animals, it has the Pee function, right? right!
+But a[0] is a dog, right? right!
+
+Thanks to Polymorphism, the program will understand automatically that if a[0] is a dog, it has to use the "Pee" function inside the "Dog" class
+and not the one inside the "Pee" class.
+Because a[0] is a dog, so it's supposed to Pee as a dog!
+a[0] is dog1, but it could be consider as dog? 
+Yes <3 
+Let's write all the code to make it more clear!
+
+Dog dog1 = new Dog()
+Cat cat1 = new Cat()
+Dog dog2 = new Dog()
+
+Animal[] a = [dog1, cat1, dog2]
+
+for(i = 0; i < 3; i++) {
+    a[i].Pee();
+}
+
+So, now the program knows that dog1 is a dog, because we made it by writing new Dog()
+So, when it does a[0].Pee(), is the same as writing dog1.Pee()
+Since dog1 = new Dog(), "Pee" should be the "Pee" function inside "Dog" class, not "Animal" class.
+
+Clear <3
+Always so amazingly smart <3
+
+Then welcome to oop programming, we're done <3<3<3
+Wow, I didn't know it would take time so much like that,, thank you so much ㅠㅠ
+Sorry if it was very long, but it's really a lot of stuff!
+But at least, you can move to frontend now <3
+Yes, Thank you so much, <3<3<3<3
+You were the best student ever <3<3<3
+No, you are the best really <3<3<3
+With the reward you gave me last time, I should teach you forever hahahahaha <3<3<3
+hahahahahaha you're soo cute.<3
+I really enjoyed it, the reward I mean <3
+I'm happy you liked it, you deserve it <3
+And I love you <3
+Love you too <3<3
+
+You're the best <3<3<3<3
+Let's go back to kakao then? <3
+Sure thing! <3 Thank you for the fun session <3
+Thanks for taking me so much time <3
+You're worth all the time in the world and more <3
+Thank you <3<3
+Let's go back now <3<3<3
